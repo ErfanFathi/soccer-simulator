@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+message Robots {
+    required int32  id           = 1 ;
+    required bool   yellow_team  = 2 ; 
+    required float  x            = 3 ;
+    required float  y            = 4 ;
+    required float  orientation  = 5 ;
+    required float  vx           = 6 ;
+    required float  vy           = 7 ;
+    required float  vw           = 8 ;
+    required bool   touch_ball   = 9 ;
+    required bool   flat_kick    = 10;
+    required bool   chip_kick    = 11;
+}
+
+message Ball {
+    required float x  = 1;
+    required float y  = 2;
+    required float vx = 3;
+    required float vy = 4;
+}
+
+message Observation {
+    required uint32 frame_number = 1;
+    repeated Robots robots       = 2;
+    repeated Ball   ball         = 3;
+}

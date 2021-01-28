@@ -1,0 +1,41 @@
+syntax = "proto2";
+
+message Robot_Replacement {
+    required int32  id           = 1 ;
+    required bool   yellow_team  = 2 ; 
+    required float  x            = 3 ;
+    required float  y            = 4 ;
+    required float  orientation  = 5 ;
+    required float  vx           = 6 ;
+    required float  vy           = 7 ;
+    required float  vw           = 8 ;
+}
+
+message Ball_Replacement {
+    required float x  = 1;
+    required float y  = 2;
+    required float vx = 3;
+    required float vy = 4;
+}
+
+message Replacement {
+    repeated Robot_Replacement robot_replacement   = 1;
+    optional Ball_Replacement  ball_replacement    = 2;
+}
+
+message Robot_Command {
+    required int32  id           = 1 ;
+    required bool   yellow_team  = 2 ; 
+    required float  vx           = 3 ;
+    required float  vy           = 4 ;
+    required float  vw           = 5 ;
+    required float  kickspeedx   = 6 ;
+    required float  kickspeedz   = 7 ;
+    required bool   spinner      = 8 ;
+}
+
+message Commands {
+    required bool          reset_frame_number = 1;
+    optional Replacement   replacement        = 2;
+    repeated Robot_Command robot_command      = 3;
+}
