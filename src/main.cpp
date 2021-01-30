@@ -9,6 +9,5 @@ int main()
     while (1)
     {
         ssl->receivePacket();
-        ssl->sendPacket();
     }
 }

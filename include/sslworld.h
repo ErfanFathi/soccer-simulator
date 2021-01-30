@@ -64,7 +64,6 @@ public:
     PFixedBox* walls[WALL_COUNT];
     int selected;
     Robot* robots[MAX_ROBOT_COUNT];
-    char *in_buffer;
 
 public slots:
     void receivePacket();

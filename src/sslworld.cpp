@@ -314,7 +314,7 @@ void SSLWorld::sendPacket()
     Observation* packet = new Observation;
     packet->set_frame_number( framenum );
 
-    dReal x, y, z, dir, k, vx, vy, vw;
+    dReal x = 0, y = 0, z = 0, dir = 0, k = 0, vx = 0, vy = 0, vw = 0;
     ball->getBodyPosition( x, y, z );
     const auto vel_vec = dBodyGetLinearVel( ball->body );
     Ball* ba = packet->mutable_ball()->Add();
@@ -322,7 +322,6 @@ void SSLWorld::sendPacket()
     ba->set_vy( vel_vec[1] );
     ba->set_x( x );
     ba->set_y( y );
-
     for ( int i = 0; i < Robots_Count; i++ )
     {
         robots[i]->getXY( x, y );
@@ -362,7 +361,6 @@ void SSLWorld::sendPacket()
             ro->set_flat_kick( false );
         }
     }
-
     // For yellow robots
     if ( TEAM_COUNT == 2 )
     {
@@ -419,6 +417,7 @@ void SSLWorld::receivePacket()
     quint16 port;
     while ( commandsSocket->hasPendingDatagrams() )
     {
+        char in_buffer[commandsSocket->pendingDatagramSize()];
         int size = commandsSocket->readDatagram( in_buffer, 65536, &sender, &port );
         if ( size > 0 )
         {
@@ -430,7 +429,6 @@ void SSLWorld::receivePacket()
                 if ( packet.reset_frame_number() )
                     framenum = 0;
             }
-
             if( packet.has_replacement() )
             {
                 if( packet.replacement().has_ball_replacement()) 
@@ -471,7 +469,6 @@ void SSLWorld::receivePacket()
                     robots[id]->setSpeed( vx, vy, vw );
                 }
             }
-
             if( packet.robot_command_size() > 0 )
             {
                 for( int i = 0; i < packet.robot_command_size(); i++ )
@@ -490,7 +487,6 @@ void SSLWorld::receivePacket()
                     int id = robotIndex( k, team );
                     if ( ( id < 0 ) or ( id >= Robots_Count * 2 ) ) continue;
                     robots[id]->setSpeed( vx, vy, vw );
-
                     dReal kickx = 0 , kickz = 0;
                     bool kick = false;
                     if( packet.robot_command(i).has_kickspeedx() )
@@ -515,6 +511,7 @@ void SSLWorld::receivePacket()
                 }
             }
             this->step(worldSetting_DeltaTime);
+            this->sendPacket();
         }
     }
 }
