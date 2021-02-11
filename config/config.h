@@ -66,7 +66,7 @@
 #define worldSetting_commands_port 20011
 
 #define MAX_ROBOT_COUNT 16
-#define TEAM_COUNT 1 // 1->JustBlue [-|-] 2->Blue&Yellow 
-#define Robots_Count 1
+#define TEAM_COUNT 2 // 1->JustBlue [-|-] 2->Blue&Yellow 
+#define Robots_Count 8
 
 #endif // CONFIG_H
