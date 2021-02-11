@@ -170,6 +170,5 @@ void PWorld::step( dReal dt )
         dJointGroupEmpty( contactgroup );
     }
     catch (...) {
-        //qDebug() << "Some Error Happened;";
     }
 }
