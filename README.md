@@ -35,6 +35,11 @@ make
 ```cd $projectPath/bin```<br>
 ```./soccerSim```
 
+### Finale
+
+Report anything to:<br>
+fathierfan97@gmail.com<br>
+
 ### Citing
 If you use grSim in your research, please cite [the following paper](http://link.springer.com/chapter/10.1007/978-3-642-32060-6_38):
 
