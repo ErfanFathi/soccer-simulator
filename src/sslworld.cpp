@@ -320,8 +320,8 @@ void SSLWorld::sendPacket()
     Ball* ba = packet->mutable_ball()->Add();
     ba->set_vx( vel_vec[0] );
     ba->set_vy( vel_vec[1] );
-    ba->set_x( x );
-    ba->set_y( y );
+    ba->set_x( x * 1000.0f );
+    ba->set_y( y * 1000.0f );
     for ( int i = 0; i < Robots_Count; i++ )
     {
         robots[i]->getXY( x, y );
