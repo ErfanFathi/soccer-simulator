@@ -76,7 +76,7 @@ class Provider:
             commandsPacket.replacement.ball_replacement.vy = commands['ball_vy']
 
             for i in range(NO):
-                replacement_rob             = self.commandsPacket.replacement.robot_replacement.add()
+                replacement_rob             = commandsPacket.replacement.robot_replacement.add()
                 replacement_rob.id          = commands['robot_id_'+str(i)]
                 replacement_rob.yellow_team = commands['robot_yellow_team_'+str(i)] 
                 replacement_rob.x           = commands['robot_x_'+str(i)]
