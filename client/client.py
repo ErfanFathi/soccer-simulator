@@ -113,7 +113,7 @@ class Provider:
         
         _observation['ball_x'] = self.observationPacket.ball[0].x / 1000.0
         _observation['ball_y'] = self.observationPacket.ball[0].y / 1000.0
-        _observation['ball_vx'] = self.observationPacket.ball[0].vx / 1000.0
-        _observation['ball_vy'] = self.observationPacket.ball[0].vy / 1000.0
+        _observation['ball_vx'] = self.observationPacket.ball[0].vx
+        _observation['ball_vy'] = self.observationPacket.ball[0].vy
 
         return _observation
